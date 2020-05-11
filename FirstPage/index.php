@@ -5,10 +5,7 @@
 <html>
 <head>
     <title></title>
-     
-    <!-- Latest compiled and minified Bootstrap CSS -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
-         
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
     <!-- custom css -->
     <style>
     .m-r-1em{ margin-right:1em; }
@@ -20,6 +17,32 @@
 </head>
 <body>
  
+    
+<nav class="navbar navbar-dark bg-primary">
+  <a class="navbar-brand">Navbar</a>
+  <form class="form-inline">
+    <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+    <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+  </form>
+</nav>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     <!-- container -->
     <div class="container">
   
@@ -32,31 +55,21 @@
         <?php
                 // include database connection
                 include '../data/database.php';
-                 
-                // delete message prompt will be here
-                 $action = isset($_GET['action']) ? $_GET['action'] : "";
- 
-                    // if it was redirected from delete.php
-                    if($action=='deleted'){
-                        echo "<div class='alert alert-success'>Record was deleted.</div>";
-                    }
+            
 
                 // select all data
-                $query = "SELECT id, name, price,pays_depart,date_vol,image,nb_place FROM vols ORDER BY id DESC";
+                $query = "SELECT id, name, price,pays_depart,date_vol,image,nb_place FROM vols WHERE nb_place>0 ORDER BY id DESC";
                 $stmt = $con->prepare($query);
                 $stmt->execute();
                  
                 // this is how to get number of rows returned
                 $num = $stmt->rowCount();
                  
-                // link to create record form
-                echo "<a href='create.php' class='btn btn-primary m-b-1em'>Create New Product</a>";
-                 
                 //check if more than 0 record found
                 if($num>0){
                  
                     // data from database will be here
-                    echo "<table class='table table-hover table-responsive table-bordered'>";//start table
+                    echo "<table class='table table-hover table-responsive'>";//start table
  
                         //creating our table heading
                         echo "<tr>";
@@ -89,13 +102,9 @@
                         echo "<td>{$nb_place}</td>";
                         echo "<td>";
                             // read one record 
-                            echo "<a href='read_one.php?id={$id}' class='btn btn-info m-r-1em'>Read</a>";
+                            echo "<a href='read_one.php?id={$id}' class='btn btn-info m-r-1em'>More infos</a>";
                              
-                            // we will use this links on next part of this post
-                            echo "<a href='update.php?id={$id}' class='btn btn-primary m-r-1em'>Edit</a>";
-                 
-                            // we will use this links on next part of this post
-                            echo "<a href='#' onclick='delete_user({$id});'  class='btn btn-danger'>Delete</a>";
+                          
                         echo "</td>";
                     echo "</tr>";
                 }
@@ -116,12 +125,9 @@ echo "</table>";
 ?>
          
     </div> <!-- end .container -->
-     
-<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
-   
-<!-- Latest compiled and minified Bootstrap JavaScript -->
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
  
 <!-- confirm delete record will be here -->
             <script type='text/javascript'>

@@ -29,7 +29,7 @@
             // read current record's data
             try {
                 // prepare select query
-                $query = "SELECT id, name, price,pays_depart,date_vol FROM vols WHERE id = ? LIMIT 0,1";
+                $query = "SELECT id, name, price,pays_depart,date_vol,image FROM vols WHERE id = ? LIMIT 0,1";
                 $stmt = $con->prepare( $query );
              
                 // this is the first question mark
@@ -46,6 +46,7 @@
                 $date_vol=$row['date_vol'];
                 $pays_depart = $row['pays_depart'];
                 $price = $row['price'];
+                $image=$row['image'];
             }
              
             // show error
@@ -56,6 +57,10 @@
  
         <!-- HTML read one record table will be here -->
             <table class='table table-hover table-responsive table-bordered'>
+            <tr>
+                    <td>Image</td>
+                    <td><?php echo "<img src='image/{$image}' style='height:150px;'>; " ?></td>
+                </tr>
                 <tr>
                     <td>Name</td>
                     <td><?php echo htmlspecialchars($name, ENT_QUOTES);  ?></td>
