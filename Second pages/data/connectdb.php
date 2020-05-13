@@ -9,6 +9,6 @@
     if(!$conn){
         die("Connection failed:".mysqli_connect_error()."<br>"."Error NO :".mysqli_connect_errno());
     }else{
-        echo "Connected";
+        // echo "Connected";
     }
 ?>

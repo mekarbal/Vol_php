@@ -17,42 +17,11 @@
 
     <title>Document</title>
 </head>
-<body>
-
-    <hr>
-    <div class="container">
-        <?php
-            if($_SESSION['alert'] == 1){
-                echo "<div class='alert alert-success alert-dismissible'>
-                        <a href='#' class='close' data-dismiss='alert' aria-label='close'>&times;</a>
-                        <strong>Success!</strong>".$_SESSION['client_existz'].". 
-                    </div>";
-            }else if($_SESSION['alert'] == 4){
-                echo "<div class='alert alert-warning alert-dismissible'>
-                        <a href='#' class='close' data-dismiss='alert' aria-label='close'>&times;</a>
-                        <strong>Oups!</strong>".$_SESSION['client_existz'].". 
-                    </div>";
-            }else if($_SESSION['alert'] == 2 || 3){
-                echo "<div class='alert alert-danger alert-dismissible'>
-                        <a href='#' class='close' data-dismiss='alert' aria-label='close'>&times;</a>
-                        <strong>Oups!</strong>".$_SESSION['client_existz'].". 
-                    </div>";
-            }
-            // echo $_SESSION['client_existz'];
-        ?>
-    </div>
-    <br>
-    <!-- <br> -->
-    <a href="index.php" class="btn btn-info ml-5"><span class="glyphicon glyphicon-circle-arrow-left"></span> Back to eservation</a>
-    <br>
-    <br>
-    
-    <hr>
-
+<body onload="window.print()">
     <div class="container mt-5">
         <div class="row mt-5">
-            <div class="col-12 ">
-                <div class="card shadow-lg p-3 mb-5 bg-white rounded">
+            <div class="col-12">
+                <div class="card">
                     <div class="card-body p-0">
                         <div class="row pb-5 p-5">
                             <div class="col-md-6">
@@ -66,12 +35,12 @@
                                         echo "<tr>";
                                         while($row0 = mysqli_fetch_assoc($result0)){
                                             echo "  <p class='mb-1'><strong>ID Client :</strong>".$row0['id_client']."</p>";
-                                            echo "  <p class='mb-1'><strong>Nom :</strong>".$row0['nom_client']."</p>";
-                                            echo "  <p class='mb-1'><strong>Prenom :</strong>".$row0['prenom_client']."</p>";
+                                            echo "  <p class='mb-1'><strong>Nom:</strong>".$row0['nom_client']."</p>";
+                                            echo "  <p class='mb-1'><strong>Prenom:</strong>".$row0['prenom_client']."</p>";
                                             echo "  <p class='mb-1'><strong>CIN :</strong>".$row0['cin']."</p>";
-                                            echo "  <p class='mb-1'><strong>Numéro De Passeport :</strong>".$row0['n_passport']."</p>";
-                                            echo "  <p class='mb-1'><strong>Telephone :</strong>".$row0['phone']."</p>";
-                                            echo "  <p class='mb-1'><strong>Email :</strong>".$row0['email']."</p>"; 
+                                            echo "  <p class='mb-1'><strong>NumDe Pasport:</strong>".$row0['n_passport']."</p>";
+                                            echo "  <p class='mb-1'><strong>phone:</strong>".$row0['phone']."</p>";
+                                            echo "  <p class='mb-1'><strong>email :</strong>".$row0['email']."</p>";
                                         }
                                     }
                                 ?>
@@ -86,7 +55,7 @@
                                     if(mysqli_num_rows($result1) >0){
                                         echo "<tr>";
                                         while($row1 = mysqli_fetch_assoc($result1)){
-                                            echo "  <p class='mb-1'><strong>ID Reservation :</strong>".$row1['id_reservation']."</p>";
+                                            echo "  <p class='mb-1'><strong>ID Reservation:</strong>".$row1['id_reservation']."</p>";
                                             echo "  <p class='mb-1'><strong>DATE RESERVATION :</strong>".$row1['date_reservation']."</p>";
                                         }
                                     }
@@ -106,7 +75,7 @@
                             <table class="table">
                                 <thead>
                                     <tr>
-                                        <th class="border-0 text-uppercase small font-weight-bold">#</th>
+                                        <th class="border-0 text-uppercase small font-weight-bold">champs</th>
                                         <th class="border-0 text-uppercase small font-weight-bold">description</th>
                                     </tr>
                                 </thead>
@@ -118,17 +87,17 @@
                                         $result2 = mysqli_query($conn,$query2);
                                         if(mysqli_num_rows($result2) >0){
                                             while($row2 = mysqli_fetch_assoc($result2)){
-                                                echo "<tr><td><strong>ID VOL:</strong></td><td>".$row2['id']."</td></tr>";
+                                                echo "<tr><td><strong>ID :</strong></td><td>".$row2['id']."</td></tr>";
                                                 echo "<tr><td><strong>NOM VOL :</strong></td><td>".$row2['name']."</td></tr>";
-                                                echo "<tr><td><strong>PRIX DE VOL :</strong></td><td>".$row2['price']."</td></tr>";
-                                                echo "<tr><td><strong>IMAGE DE VOL :</strong></td><td>".$row2['image']."</td></tr>";
-                                                echo "<tr><td><strong>Date De Création De Vol :</strong></td><td>".$row2['created']."</td></tr>";
-                                                echo "<tr><td><strong>Pays De Depart :</strong></td><td>".$row2['pays_depart']."</td></tr>";
-                                                echo "<tr><td><strong>Pays D'arrivée :</strong></td><td>".$row2['pays_arrive']."</td></tr>";
-                                                echo "<tr><td><strong>Date De Vol :</strong></td><td>".$row2['date_vol']."</td></tr>";
-                                                echo "<tr><td><strong>Heure De Vol :</strong></td><td>".$row2['hour_vol']."</td></tr>";
-                                                echo "<tr><td><strong>Minute De Vol :</strong></td><td>".$row2['minute_vol']."</td></tr>";
-                                                echo "<tr><td><strong>Votre Place :</strong></td><td>".$row2['nb_place']."</td></tr>";
+                                                echo "<tr><td><strong>price :</strong></td><td>".$row2['price']."</td></tr>";
+                                                echo "<tr><td><strong>image :</strong></td><td>".$row2['image']."</td></tr>";
+                                                echo "<tr><td><strong>created :</strong></td><td>".$row2['created']."</td></tr>";
+                                                echo "<tr><td><strong>pays_depart :</strong></td><td>".$row2['pays_depart']."</td></tr>";
+                                                echo "<tr><td><strong>pays_arrive :</strong></td><td>".$row2['pays_arrive']."</td></tr>";
+                                                echo "<tr><td><strong>date_vol :</strong></td><td>".$row2['date_vol']."</td></tr>";
+                                                echo "<tr><td><strong>hour_vol :</strong></td><td>".$row2['hour_vol']."</td></tr>";
+                                                echo "<tr><td><strong>minute_vol :</strong></td><td>".$row2['minute_vol']."</td></tr>";
+                                                echo "<tr><td><strong>nb_place :</strong></td><td>".$row2['nb_place']."</td></tr>";
                                             }
                                         }
                                     ?>
@@ -146,7 +115,6 @@
                                     </div>
                                 </div>
                             </div>
-                            <a href="imprimer.php" class="btn btn-success btn-lg btn-block mt-4 mb-4 ml-5 mr-5"><span class="glyphicon glyphicon-print"></span> imprimer formulaire</a>
                             <div class="px-5">
                                 <div class="px-5">
                                     <div class="px-5">
