@@ -1,20 +1,25 @@
-<!DOCTYPE HTML>
 <html>
-<head>
-    <title>PDO - Read One Vol</title>
+ <head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <title>Vols</title>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+ </head>
+ <body>
  
-    <!-- Latest compiled and minified Bootstrap CSS -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
- 
-</head>
-<body>
+ <nav class="navbar navbar-dark bg-primary">
+        <a class="navbar-brand">TM Air</a>
+        <form class="navbar-form " role="search">
+            <input type="text" name="search_text" id="search_text" placeholder="Chercher Un Vol" class="form-control" />   
+        </form>
+    </nav>
  
  
     <!-- container -->
     <div class="container">
   
         <div class="page-header">
-            <h1>Read Product</h1>
+            <h1 style="text-align:center;" class="mt-5 jumbotron">Toutes Les informations sur le Vol </h1>
         </div>
          
         <!-- PHP read one record will be here -->
@@ -29,7 +34,7 @@
             // read current record's data
             try {
                 // prepare select query
-                $query = "SELECT id, name, price,pays_depart,date_vol,image FROM vols WHERE id = ? LIMIT 0,1";
+                $query = "SELECT id, name, price,pays_depart,pays_arrive,date_vol,image FROM vols WHERE id = ? LIMIT 0,1";
                 $stmt = $con->prepare( $query );
              
                 // this is the first question mark
@@ -47,6 +52,8 @@
                 $pays_depart = $row['pays_depart'];
                 $price = $row['price'];
                 $image=$row['image'];
+                $pays_arrive=$row['pays_arrive'];
+                
             }
              
             // show error
@@ -55,38 +62,29 @@
             }
         ?>
  
-        <!-- HTML read one record table will be here -->
-            <table class='table table-hover table-responsive table-bordered'>
-            <tr>
-                    <td>Image</td>
-                    <td><?php echo "<img src='image/{$image}' style='height:150px;'>; " ?></td>
-                </tr>
-                <tr>
-                    <td>Name</td>
-                    <td><?php echo htmlspecialchars($name, ENT_QUOTES);  ?></td>
-                </tr>
-                <tr>
-                    <td>date_vol</td>
-                    <td><?php echo htmlspecialchars($date_vol, ENT_QUOTES);  ?></td>
-                </tr>
-                <tr>
-                    <td>depart</td>
-                    <td><?php echo htmlspecialchars($pays_depart, ENT_QUOTES);  ?></td>
-                </tr>
-                <tr>
-                    <td>Price</td>
-                    <td><?php echo htmlspecialchars($price, ENT_QUOTES);  ?></td>
-                </tr>
-                <tr>
-                    <td></td>
-                    <td>
-                        <a href='index.php' class='btn btn-danger'>Back to read products</a>
-                    </td>
-                </tr>
-            </table>
+       
+            <div class="card mb-3" >
+                <div class="row no-gutters">
+                    <div class="col-md-6 text-center hover">
+                        <img  src='<?php echo "image/{$image}" ?>' style='height:150px; '>;  
+                    </div>
+                    <div class="col-md-6">
+                    <div class="card-body">
+                        <h5 class="card-title">Nom :<span class="font-weight-bold text-success"> <?php echo "{$name}" ?><span></h5>
+                        <p class="card-text">Ville de depart : <span class="text-center "> <?php echo "{$pays_depart}" ?></span></p>
+                        <p class="card-text">Ville d'arriver : <span class="text-center"> <?php echo "{$pays_arrive}" ?></span></p>
+                        <p class="card-text">Date de Vol : <span class="text-center"><?php echo "{$date_vol}" ?></span></p>
+                        <p class="card-text">Prix : <span class="text-center font-weight-bold text-success"><?php echo "{$price}" ?> Dhs</span></p>
+                        <a href='index.php' class='btn btn-danger'>Annuler le vol</a>
+                    </div>
+                    </div>
+                </div>
+            </div>
+
  
     </div> <!-- end .container -->
-     
+    
+
 <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
 <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
    
