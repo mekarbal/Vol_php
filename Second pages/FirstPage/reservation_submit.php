@@ -119,14 +119,14 @@
 
                                     $sql2 = "UPDATE `vols` SET `nb_place`=`nb_place`-1 WHERE `id`={$id_vol}";
                                     if(mysqli_query($conn,$sql2) && mysqli_affected_rows($conn)>0){
-                                        $var_sesionn = $var_sesionn.'  +  Enregistrer La Reservation Avec Success  +  Nombre De Place De Voll Diminue Par 1';
+                                        $var_sesionn = $var_sesionn.'  +  Enregistrer La Reservation Avec Success  +  Nombre De Place De Vol Diminue Par 1';
                                         $_SESSION['client_existz'] = $var_sesionn;
                                         $_SESSION['alert'] = 1 ;
 
                                         header('Location:'.'confirmation.php');
                                         exit();
                                     }else{
-                                        $var_sesionn = $var_sesionn.'  +  Enregistrer La Reservation Avec Success  +  Nombre De Place De Voll Pas Diminue Par 1';
+                                        $var_sesionn = $var_sesionn.'  +  Enregistrer La Reservation Avec Success  +  Nombre De Place De Vol Pas Diminue Par 1';
                                         $_SESSION['client_existz'] = $var_sesionn;
                                         $_SESSION['alert'] = 2 ;
                                         header('Location:'.'confirmation.php');

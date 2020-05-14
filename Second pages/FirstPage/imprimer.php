@@ -35,10 +35,10 @@
                                         echo "<tr>";
                                         while($row0 = mysqli_fetch_assoc($result0)){
                                             echo "  <p class='mb-1'><strong>ID Client :</strong>".$row0['id_client']."</p>";
-                                            echo "  <p class='mb-1'><strong>Nom:</strong>".$row0['nom_client']."</p>";
-                                            echo "  <p class='mb-1'><strong>Prenom:</strong>".$row0['prenom_client']."</p>";
-                                            echo "  <p class='mb-1'><strong>CIN :</strong>".$row0['cin']."</p>";
-                                            echo "  <p class='mb-1'><strong>NumDe Pasport:</strong>".$row0['n_passport']."</p>";
+                                            echo "  <p class='mb-1 text-uppercase'><strong>Nom:</strong>".$row0['nom_client']."</p>";
+                                            echo "  <p class='mb-1 text-uppercase'><strong>Prenom:</strong>".$row0['prenom_client']."</p>";
+                                            echo "  <p class='mb-1 text-uppercase '><strong>CIN :</strong>".$row0['cin']."</p>";
+                                            echo "  <p class='mb-1 text-uppercase'><strong>Numero de Passport Pasport:</strong>".$row0['n_passport']."</p>";
                                             echo "  <p class='mb-1'><strong>phone:</strong>".$row0['phone']."</p>";
                                             echo "  <p class='mb-1'><strong>email :</strong>".$row0['email']."</p>";
                                         }
@@ -75,7 +75,7 @@
                             <table class="table">
                                 <thead>
                                     <tr>
-                                        <th class="border-0 text-uppercase small font-weight-bold">champs</th>
+                                        <th class="border-0 text-uppercase small font-weight-bold">#</th>
                                         <th class="border-0 text-uppercase small font-weight-bold">description</th>
                                     </tr>
                                 </thead>
@@ -87,19 +87,18 @@
                                         $result2 = mysqli_query($conn,$query2);
                                         if(mysqli_num_rows($result2) >0){
                                             while($row2 = mysqli_fetch_assoc($result2)){
-                                                echo "<tr><td><strong>ID :</strong></td><td>".$row2['id']."</td></tr>";
-                                                echo "<tr><td><strong>NOM VOL :</strong></td><td>".$row2['name']."</td></tr>";
-                                                echo "<tr><td><strong>price :</strong></td><td>".$row2['price']."</td></tr>";
-                                                echo "<tr><td><strong>image :</strong></td><td>".$row2['image']."</td></tr>";
-                                                echo "<tr><td><strong>created :</strong></td><td>".$row2['created']."</td></tr>";
-                                                echo "<tr><td><strong>pays_depart :</strong></td><td>".$row2['pays_depart']."</td></tr>";
-                                                echo "<tr><td><strong>pays_arrive :</strong></td><td>".$row2['pays_arrive']."</td></tr>";
-                                                echo "<tr><td><strong>date_vol :</strong></td><td>".$row2['date_vol']."</td></tr>";
-                                                echo "<tr><td><strong>hour_vol :</strong></td><td>".$row2['hour_vol']."</td></tr>";
-                                                echo "<tr><td><strong>minute_vol :</strong></td><td>".$row2['minute_vol']."</td></tr>";
-                                                echo "<tr><td><strong>nb_place :</strong></td><td>".$row2['nb_place']."</td></tr>";
+                                                echo "<tr><td><strong>ID </strong></td><td>".$row2['id']."</td></tr>";
+                                                echo "<tr><td><strong>Nom de vol </strong></td><td>".$row2['name']."</td></tr>";
+                                                echo "<tr><td><strong>Prix </strong></td><td>".$row2['price']." Dhs</td></tr>";
+                                                echo "<tr><td><strong>Date de reservation </strong></td><td>".$row2['created']."</td></tr>";
+                                                echo "<tr><td><strong>Ville de depart </strong></td><td>".$row2['pays_depart']."</td></tr>";
+                                                echo "<tr><td><strong>Ville d'arriver</strong></td><td>".$row2['pays_arrive']."</td></tr>";
+                                                echo "<tr><td><strong>date_vol </strong></td><td>".$row2['date_vol']."</td></tr>";
+                                                echo "<tr><td><strong>L'heure de depart </strong></td><td>".$row2['hour_vol']."h:".$row2['minute_vol']."min</td></tr>";
+                                                echo "<tr><td><strong>Votre Place </strong></td><td>".$row2['nb_place']."</td></tr>";
                                             }
                                         }
+                                       
                                     ?>
                                 </tbody>
                             </table>

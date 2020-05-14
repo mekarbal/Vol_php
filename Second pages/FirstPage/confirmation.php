@@ -118,17 +118,15 @@
                                         $result2 = mysqli_query($conn,$query2);
                                         if(mysqli_num_rows($result2) >0){
                                             while($row2 = mysqli_fetch_assoc($result2)){
-                                                echo "<tr><td><strong>ID VOL:</strong></td><td>".$row2['id']."</td></tr>";
-                                                echo "<tr><td><strong>NOM VOL :</strong></td><td>".$row2['name']."</td></tr>";
-                                                echo "<tr><td><strong>PRIX DE VOL :</strong></td><td>".$row2['price']."</td></tr>";
-                                                echo "<tr><td><strong>IMAGE DE VOL :</strong></td><td>".$row2['image']."</td></tr>";
-                                                echo "<tr><td><strong>Date De Création De Vol :</strong></td><td>".$row2['created']."</td></tr>";
-                                                echo "<tr><td><strong>Pays De Depart :</strong></td><td>".$row2['pays_depart']."</td></tr>";
-                                                echo "<tr><td><strong>Pays D'arrivée :</strong></td><td>".$row2['pays_arrive']."</td></tr>";
-                                                echo "<tr><td><strong>Date De Vol :</strong></td><td>".$row2['date_vol']."</td></tr>";
-                                                echo "<tr><td><strong>Heure De Vol :</strong></td><td>".$row2['hour_vol']."</td></tr>";
-                                                echo "<tr><td><strong>Minute De Vol :</strong></td><td>".$row2['minute_vol']."</td></tr>";
-                                                echo "<tr><td><strong>Votre Place :</strong></td><td>".$row2['nb_place']."</td></tr>";
+                                                echo "<tr><td><strong>ID VOL</strong></td><td>".$row2['id']."</td></tr>";
+                                                echo "<tr><td><strong>NOM VOL </strong></td><td>".$row2['name']."</td></tr>";
+                                                echo "<tr><td><strong>PRIX DE VOL </strong></td><td>".$row2['price']."Dhs</td></tr>";
+                                                echo "<tr><td><strong>Date De Reservation </strong></td><td>".$row2['created']."</td></tr>";
+                                                echo "<tr><td><strong>Pays De Depart </strong></td><td>".$row2['pays_depart']."</td></tr>";
+                                                echo "<tr><td><strong>Pays D'arrivée </strong></td><td>".$row2['pays_arrive']."</td></tr>";
+                                                echo "<tr><td><strong>Date De Vol </strong></td><td>".$row2['date_vol']."</td></tr>";
+                                                echo "<tr><td><strong>Heure De depart </strong></td><td>".$row2['hour_vol']."h:".$row2['minute_vol']."min</td></tr>";
+                                                echo "<tr><td><strong>Votre Place </strong></td><td>".$row2['nb_place']."</td></tr>";
                                             }
                                         }
                                     ?>

@@ -30,8 +30,6 @@
          
         <!-- PHP read one record will be here -->
          <?php
-            // get passed parameter value, in this case, the record ID
-            // isset() is a PHP function used to verify if a value is there or not
             $id=isset($_GET['id']) ? $_GET['id'] : die('ERROR: Record ID not found.');
              
             //include database connection
@@ -121,7 +119,7 @@
                     </div><br>
                     <div class="mb-3">
                         <label for="text">Cin :</label>
-                        <input type="text" name="cin_client" class="form-control" id="cin" placeholder="CIN" required>
+                        <input type="text" name="cin_client" class="form-control text-uppercase" id="cin" placeholder="CIN" required>
                     </div><br>
                     <div class="mb-3">
                         <label for="text">Numéro De Passeport :</label>
