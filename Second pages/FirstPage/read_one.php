@@ -3,123 +3,101 @@
         session_start();
     }
 ?>
-<!DOCTYPE HTML>
 <html>
-<head>
-    <title>PDO - Read One Vol</title>
+ <head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <title>Vols</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+ </head>
+ <body>
  
-    <!-- Latest compiled and minified Bootstrap CSS -->
-    <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" /> -->
-
-    <!-- LINK -->
-
-    <!-- Latest compiled and minified Bootstrap CSS -->
-    <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
-
-     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css"> -->
-
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
-    
-    <!-- LINK -->
-
-    <?php include_once("../data/connectdb.php"); ?>
-</head>
-<body>
+ <nav class="navbar navbar-dark bg-primary">
+        <a class="navbar-brand">TM Air</a>
+        <form class="navbar-form " role="search">
+            <input type="text" name="search_text" id="search_text" placeholder="Chercher Un Vol" class="form-control" />   
+        </form>
+    </nav>
+ 
+ 
     <!-- container -->
     <div class="container">
-        <div class="row">
-            <div class="col-md-1 order-md-1"></div>
-            <div class="col-md-10 order-md-1">
-                <div class="page-header">
-                    <h1>Read Product</h1>
-                </div>
-            
-                <!-- PHP read one record will be here -->
-                <?php
-                    // get passed parameter value, in this case, the record ID
-                    // isset() is a PHP function used to verify if a value is there or not
-                    $id=isset($_GET['id']) ? $_GET['id'] : die('ERROR: Record ID not found.');
-                    $_SESSION['id'] = $id;
-                    //include database connection
-                    include '../data/database.php';
-                    
-                    // read current record's data
-                    try {
-                        // prepare select query
-                        $query = "SELECT id, name, price,pays_depart,date_vol,image FROM vols WHERE id = ? LIMIT 0,1";
-                        $stmt = $con->prepare( $query );
-                    
-                        // this is the first question mark
-                        $stmt->bindParam(1, $id);
-                    
-                        // execute our query
-                        $stmt->execute();
-                    
-                        // store retrieved row to a variable
-                        $row = $stmt->fetch(PDO::FETCH_ASSOC);
-                    
-                        // values to fill up our form
-                        $name = $row['name'];
-                        $date_vol=$row['date_vol'];
-                        $pays_depart = $row['pays_depart'];
-                        $price = $row['price'];
-                        $image=$row['image'];
-                    }
-                    
-                    // show error
-                    catch(PDOException $exception){
-                        die('ERROR: ' . $exception->getMessage());
-                    }
-                ?>
-        
-                <!-- HTML read one record table will be here -->
-                <table class='table table-hover table-bordered'>
-                <!-- <table class='table table-hover table-responsive table-bordered'> -->
-                <tr>
-                        <td>Image</td>
-                        <td><?php echo "<img src='image/{$image}' style='height:150px;'>; " ?></td>
-                    </tr>
-                    <tr>
-                        <td>Name</td>
-                        <td><?php echo htmlspecialchars($name, ENT_QUOTES);  ?></td>
-                    </tr>
-                    <tr>
-                        <td>date_vol</td>
-                        <td><?php echo htmlspecialchars($date_vol, ENT_QUOTES);  ?></td>
-                    </tr>
-                    <tr>
-                        <td>depart</td>
-                        <td><?php echo htmlspecialchars($pays_depart, ENT_QUOTES);  ?></td>
-                    </tr>
-                    <tr>
-                        <td>Price</td>
-                        <td><?php echo htmlspecialchars($price, ENT_QUOTES);  ?></td>
-                    </tr>
-                    <tr>
-                        <td></td>
-                        <td>
-                            <a href='index.php' class='btn btn-danger'>Back to read products</a>
-                        </td>
-                    </tr>
-                </table>
-            </div>
-            <div class="col-md-1 order-md-1"></div>
+  
+        <div class="page-header">
+            <h1 style="text-align:center;" class="mt-5 jumbotron">Toutes Les informations sur le Vol </h1>
         </div>
+         
+        <!-- PHP read one record will be here -->
+         <?php
+            // get passed parameter value, in this case, the record ID
+            // isset() is a PHP function used to verify if a value is there or not
+            $id=isset($_GET['id']) ? $_GET['id'] : die('ERROR: Record ID not found.');
+             
+            //include database connection
+            include '../data/database.php';
+             
+            // read current record's data
+            try {
+                // prepare select query
+                $query = "SELECT id, name, price,pays_depart,pays_arrive,date_vol,image FROM vols WHERE id = ? LIMIT 0,1";
+                $stmt = $con->prepare( $query );
+             
+                // this is the first question mark
+                $stmt->bindParam(1, $id);
+             
+                // execute our query
+                $stmt->execute();
+             
+                // store retrieved row to a variable
+                $row = $stmt->fetch(PDO::FETCH_ASSOC);
+             
+                // values to fill up our form
+                $name = $row['name'];
+                $date_vol=$row['date_vol'];
+                $pays_depart = $row['pays_depart'];
+                $price = $row['price'];
+                $image=$row['image'];
+                $pays_arrive=$row['pays_arrive'];
+                
+            }
+             
+            // show error
+            catch(PDOException $exception){
+                die('ERROR: ' . $exception->getMessage());
+            }
+        ?>
  
-    </div> 
-    <!-- end .container -->
+       
+            <div class="card mb-3" >
+                <div class="row no-gutters">
+                    <div class="col-md-6  text-center hover">
+                        <img   src='<?php echo "image/{$image}" ?>' style='height:150px; '>;  
+                    </div>
+                    <div class="col-md-6">
+                    <div class="card-body   text-center border border-primary ">
+                        <h5 class="card-title "><i class="fab fa-avianex"></i> Nom : <span class="font-weight-bold text-success"> <?php echo "{$name}" ?><span></h5>
+                        <p class="card-text"><i class="fas fa-map-marked"></i> Ville de depart : <span class="text-center "> <?php echo "{$pays_depart}" ?></span></p>
+                        <p class="card-text"><i class="fas fa-map-marked"></i> Ville d'arriver : <span class="text-center"> <?php echo "{$pays_arrive}" ?></span></p>
+                        <p class="card-text"><i class="fas fa-calendar-alt"></i> Date de Vol :<span class="text-center"><?php echo "{$date_vol}" ?></span></p>
+                        <p class="card-text"><i class="fas fa-money-check "></i> Prix: <span class="text-center font-weight-bold text-success"><?php echo "{$price}" ?>Dhs</span></p>
+                        <a href='index.php' class='btn btn-danger ml-2'>Annuler le vol</a>
+                    </div>
+                    </div>
+                </div>
+            </div>
+
+ 
+    </div> <!-- end .container -->
+    
 
     <hr>
 
     <!-- START CONTAINER -->
 
     <div class="container shadow-lg p-3 mt-5 mb-5 bg-white rounded">
-        <div class="row mb-5">
+            <h1 class="text-center mt-5">Veuillez Remplire Vos informations Pour reservez un Vol</h1>
+        <div class="row mb-5 mt-5">
             <div class="col-md-1 order-md-1"></div>
             <div class="col-md-10 order-md-1">
                 <form class="needs-validation" method='POST' action='reservation_submit.php'>
@@ -159,15 +137,11 @@
         </div>
     </div>
 
-    <!-- END CONTAINER -->
-     
-<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-<!-- <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script> -->
-   
-<!-- Latest compiled and minified Bootstrap JavaScript -->
-<!-- <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script> -->
+    <footer class="page-footer font-small bg-primary">
 
+<div class="footer-copyright text-center mt-5 py-3 mb-0">© 2020 Copyright:<a href="" class="text-light"> TM Air</a></div>
 
+</footer>
 <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
