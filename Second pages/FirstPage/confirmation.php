@@ -12,14 +12,24 @@
     <?php include_once("../data/connectdb.php"); ?>
 
     <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css"> -->
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
 
     <title>Document</title>
 </head>
 <body>
 
-    <hr>
+    <nav class="navbar navbar-dark bg-primary">
+        <a class="navbar-brand" href="index.php">TM Air</a>
+        <form class="navbar-form " role="search">
+            <input type="text" name="search_text" id="search_text" placeholder="Chercher Un Vol" class="form-control" />   
+        </form>
+    </nav>
+
+    <br>
     <div class="container">
         <?php
             if($_SESSION['alert'] == 1){
@@ -42,12 +52,15 @@
         ?>
     </div>
     <br>
-    <!-- <br> -->
-    <a href="index.php" class="btn btn-info ml-5"><span class="glyphicon glyphicon-circle-arrow-left"></span> Back to eservation</a>
-    <br>
-    <br>
-    
+
     <hr>
+    <div class="container">
+        <div class="">
+            <center>
+                <img src="image/back_img3.jpg" alt="" style="width: 30%;">
+            </center>
+        </div>
+    </div>
 
     <div class="container mt-5">
         <div class="row mt-5">
@@ -160,6 +173,10 @@
         </div>
         <div class="text-light mt-5 mb-5 text-center small">by : <a class="text-light" target="_blank" href="http://totoprayogo.com">totoprayogo.com</a></div>
     </div>
+
+    <footer class="page-footer font-small bg-primary">
+        <div class="footer-copyright text-center mt-5 py-3 mb-0">© 2020 Copyright:<a href="" class="text-light"> TM Air</a></div>
+    </footer>
 
 
     <!-- Optional JavaScript -->

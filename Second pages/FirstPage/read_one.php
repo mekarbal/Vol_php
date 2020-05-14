@@ -14,7 +14,7 @@
  <body>
  
  <nav class="navbar navbar-dark bg-primary">
-        <a class="navbar-brand">TM Air</a>
+        <a class="navbar-brand" href="index.php">TM Air</a>
         <form class="navbar-form " role="search">
             <input type="text" name="search_text" id="search_text" placeholder="Chercher Un Vol" class="form-control" />   
         </form>
@@ -88,17 +88,15 @@
  
     </div> <!-- end .container -->
     
-    
+    <br>
 
-<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
-   
-<!-- Latest compiled and minified Bootstrap JavaScript -->
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
- 
-</body>
-</html>
-    <hr>
+    <div class="container">
+        <div class="">
+            <center>
+                <img src="image/back_img3.jpg" alt="" style="width: 30%;">
+            </center>
+        </div>
+    </div>
 
     <!-- START CONTAINER -->
 
@@ -136,7 +134,7 @@
                         <input type="text" name="email" class="form-control" id="email" placeholder="you@example.com" required>
                     </div><br>
                     <hr class="mb-4">
-                    <button class="btn btn-success btn-lg btn-block" type="submit"  name="submit">Reserve</button>
+                    <button class="btn btn-outline-success btn-lg btn-block" type="submit"  name="submit">Reserve</button>
                 </form>
             </div>
             <div class="col-md-1 order-md-1">

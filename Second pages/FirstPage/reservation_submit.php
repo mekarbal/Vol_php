@@ -42,16 +42,19 @@
                     if(mysqli_query($conn,$query2) && mysqli_affected_rows($conn)>0){
 
                         $var_sesionn = "  Client Deja Inscrit  +  Enregistrer La Reservation Avec Success";
-                        $query3 = "SELECT `id_reservation` FROM `reservations` WHERE `reservations`.`cli_id_client` = {$id_client_exist} ORDER BY id_reservation DESC LIMIT 1";
-                        $result3 = mysqli_query($conn,$query3);
+                        // $query3 = "SELECT `id_reservation` FROM `reservations` WHERE `reservations`.`cli_id_client` = {$id_client_exist} ORDER BY id_reservation DESC LIMIT 1";
+                        // $result3 = mysqli_query($conn,$query3);
 
-                        if(mysqli_num_rows($result3) >0){
+                        // if(mysqli_num_rows($result3) >0){
 
-                            while($row3 = mysqli_fetch_assoc($result3)){
+                            // while($row3 = mysqli_fetch_assoc($result3)){
 
-                                $last_id_reservation = mysqli_real_escape_string($conn,$row3["id_reservation"]);
-                                $_SESSION['last_id_reservation'] = $last_id_reservation;
-                            }
+                            //     $last_id_reservation = mysqli_real_escape_string($conn,$row3["id_reservation"]);
+                            //     $_SESSION['last_id_reservation'] = $last_id_reservation;
+                            // }
+
+                            $latest_id_reservation = $conn->insert_id; 
+                            $_SESSION['last_id_reservation'] = $latest_id_reservation;
 
                             $sql2 = "UPDATE `vols` SET `nb_place`=`nb_place`-1 WHERE `id`={$id_vol}";
                             if(mysqli_query($conn,$sql2) && mysqli_affected_rows($conn)>0){
@@ -70,7 +73,7 @@
                             $_SESSION['alert'] = 3 ;
                             header('Location:'.'err.php');
                             exit();
-                        }
+                        // }
                     }
                     else{
 
