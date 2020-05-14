@@ -35,22 +35,20 @@
             $id=isset($_GET['id']) ? $_GET['id'] : die('ERROR: Record ID not found.');
              
             //include database connection
-            include '../data/database.php';
+            include '../data/connectdb.php';
              
             // read current record's data
             try {
                 // prepare select query
-                $query = "SELECT id, name, price,pays_depart,pays_arrive,date_vol,image FROM vols WHERE id = ? LIMIT 0,1";
-                $stmt = $con->prepare( $query );
-             
-                // this is the first question mark
-                $stmt->bindParam(1, $id);
-             
-                // execute our query
-                $stmt->execute();
+                $query = "SELECT id, name, price,pays_depart,pays_arrive,date_vol,image FROM vols WHERE id = $id";
+                $result = mysqli_query($conn,$query);
+                if (!$result) {
+                    printf("Error: %s\n", mysqli_error($conn));
+                    exit();
+                }
              
                 // store retrieved row to a variable
-                $row = $stmt->fetch(PDO::FETCH_ASSOC);
+                $row =mysqli_fetch_array($result);
              
                 // values to fill up our form
                 $name = $row['name'];
@@ -90,7 +88,16 @@
  
     </div> <!-- end .container -->
     
+    
 
+<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+   
+<!-- Latest compiled and minified Bootstrap JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+ 
+</body>
+</html>
     <hr>
 
     <!-- START CONTAINER -->
