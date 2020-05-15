@@ -11,12 +11,22 @@
         <?php include_once("../data/connectdb.php"); ?>
 
         <!-- Bootstrap CSS -->
+        <!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css"> -->
+
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
 
         <title>Document</title>
     </head>
     <body>
+        <nav class="navbar navbar-dark bg-primary">
+            <a class="navbar-brand" href="index.php">TM Air</a>
+            <form class="navbar-form " role="search">
+                <input type="text" name="search_text" id="search_text" placeholder="Chercher Un Vol" class="form-control" />   
+            </form>
+        </nav>
         <div class="container">
             <?php
             // echo "error";
@@ -31,10 +41,15 @@
         <hr>
         <br>
         <!-- <br> -->
-        <a href="index.php" class="btn btn-info ml-5"><span class="glyphicon glyphicon-circle-arrow-left"></span> Back to eservation</a>
-        <?php
-            echo "<a href='read_one.php?id=".$_SESSION['id']."' class='btn btn-info ml-5'><span class='glyphicon glyphicon-circle-arrow-left'></span>Back to eservation 2</a>"
-        ?>
+        
+
+        <center><h1 class="display-1"><strong>Aucun résultat trouvé !</strong></h1></center>
+
+        <footer class="page-footer font-small bg-primary" style="position: absolute;width: 100%;bottom: 0px;">
+
+            <div class="footer-copyright text-center mt-2 py-3 mb-2">© 2020 Copyright:<a href="" class="text-light"> TM Air</a></div>
+
+        </footer>
 
         <!-- Optional JavaScript -->
         <!-- jQuery first, then Popper.js, then Bootstrap JS -->

@@ -31,7 +31,7 @@
         <!-- PHP read one record will be here -->
          <?php
             $id=isset($_GET['id']) ? $_GET['id'] : die('ERROR: Record ID not found.');
-             
+            $_SESSION['id'] = $id;
             //include database connection
             include '../data/connectdb.php';
              
